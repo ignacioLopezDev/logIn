@@ -149,19 +149,22 @@ class _Auth0WidgetState extends State<Auth0Widget>
                           Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Text(
-                                'Create Account',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      fontSize: 32.0,
-                                    ),
+                              Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Text(
+                                  'Create Account',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 32.0,
+                                      ),
+                                ),
                               ),
                               Align(
                                 alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(24.0),
+                                  padding: const EdgeInsets.all(12.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
                                       GoRouter.of(context).prepareAuthEvent();
@@ -221,57 +224,123 @@ class _Auth0WidgetState extends State<Auth0Widget>
                               ),
                               Align(
                                 alignment: const AlignmentDirectional(0.0, 0.0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    GoRouter.of(context).prepareAuthEvent();
-                                    final user = await authManager
-                                        .signInWithGoogle(context);
-                                    if (user == null) {
-                                      return;
-                                    }
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      final user = await authManager
+                                          .signInWithGoogle(context);
+                                      if (user == null) {
+                                        return;
+                                      }
 
-                                    context.goNamedAuth(
-                                        'HomePage', context.mounted);
-                                  },
-                                  text: 'Continue with Google',
-                                  icon: FaIcon(
-                                    FontAwesomeIcons.google,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 20.0,
-                                  ),
-                                  options: FFButtonOptions(
-                                    width: 250.0,
-                                    height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
+                                      context.goNamedAuth(
+                                          'HomePage', context.mounted);
+                                    },
+                                    text: 'Continue with Google',
+                                    icon: FaIcon(
+                                      FontAwesomeIcons.google,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 20.0,
+                                    ),
+                                    options: FFButtonOptions(
+                                      width: 250.0,
+                                      height: 40.0,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
+                                      iconPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontSize: 14.0,
+                                          ),
+                                      elevation: 0.0,
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(16.0),
+                                      hoverColor: const Color(0x9157636C),
+                                      hoverBorderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        width: 2.0,
+                                      ),
+                                      hoverTextColor:
+                                          FlutterFlowTheme.of(context)
                                               .primaryText,
-                                          fontSize: 14.0,
-                                        ),
-                                    elevation: 0.0,
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      width: 2.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(16.0),
-                                    hoverColor: const Color(0x9157636C),
-                                    hoverBorderSide: BorderSide(
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      final user = await authManager
+                                          .signInWithGoogle(context);
+                                      if (user == null) {
+                                        return;
+                                      }
+
+                                      context.goNamedAuth(
+                                          'HomePage', context.mounted);
+                                    },
+                                    text: 'Continue with Google',
+                                    icon: FaIcon(
+                                      FontAwesomeIcons.google,
                                       color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      width: 2.0,
+                                          .primaryText,
+                                      size: 20.0,
                                     ),
-                                    hoverTextColor: FlutterFlowTheme.of(context)
-                                        .primaryText,
+                                    options: FFButtonOptions(
+                                      width: 250.0,
+                                      height: 40.0,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
+                                      iconPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontSize: 14.0,
+                                          ),
+                                      elevation: 0.0,
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(16.0),
+                                      hoverColor: const Color(0x9157636C),
+                                      hoverBorderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        width: 2.0,
+                                      ),
+                                      hoverTextColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                    ),
                                   ),
                                 ),
                               ),
