@@ -3,9 +3,11 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:provider/provider.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
@@ -13,7 +15,7 @@ class HomePageWidget extends StatefulWidget {
   const HomePageWidget({super.key});
 
   @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
+  State<HomePageWidget> createState() => _HomePageWidgetState();
 }
 
 class _HomePageWidgetState extends State<HomePageWidget>
@@ -99,6 +101,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
       );
     }
 
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -124,13 +128,20 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(2.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(40.0),
-                          child: Image.network(
-                            'https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-                            width: 40.0,
-                            height: 40.0,
-                            fit: BoxFit.cover,
+                        child: AuthUserStreamWidget(
+                          builder: (context) => ClipRRect(
+                            borderRadius: BorderRadius.circular(40.0),
+                            child: Image.network(
+                              currentUserPhoto == ''
+                                  ? random_data.randomImageUrl(
+                                      0,
+                                      0,
+                                    )
+                                  : currentUserPhoto,
+                              width: 40.0,
+                              height: 40.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
@@ -142,25 +153,50 @@ class _HomePageWidgetState extends State<HomePageWidget>
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Max Rosco',
-                            style: FlutterFlowTheme.of(context).titleLarge,
+                          AuthUserStreamWidget(
+                            builder: (context) => Text(
+                              'Hola $currentUserDisplayName!',
+                              style: FlutterFlowTheme.of(context).titleLarge,
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 4.0, 0.0, 0.0),
-                            child: Text(
-                              'Good morning Max!',
-                              style: FlutterFlowTheme.of(context).labelMedium,
+                            child: AuthUserStreamWidget(
+                              builder: (context) => Text(
+                                'Good morning $currentUserDisplayName',
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ),
                     Flexible(
+                      flex: 5,
                       child: Align(
                         alignment: const AlignmentDirectional(1.0, 0.0),
                         child: FlutterFlowIconButton(
+                          borderRadius: 20.0,
+                          borderWidth: 1.0,
+                          buttonSize: 40.0,
+                          hoverIconColor: const Color(0xFF57636C),
+                          icon: Icon(
+                            Icons.settings_sharp,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
+                          onPressed: () {
+                            print('IconButton pressed ...');
+                          },
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: Align(
+                        alignment: const AlignmentDirectional(1.0, 0.0),
+                        child: FlutterFlowIconButton(
+                          borderColor: Colors.transparent,
                           borderRadius: 20.0,
                           borderWidth: 1.0,
                           buttonSize: 40.0,

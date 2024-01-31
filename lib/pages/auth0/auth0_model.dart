@@ -11,15 +11,39 @@ class Auth0Model extends FlutterFlowModel<Auth0Widget> {
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
+  // State field(s) for nickname widget.
+  FocusNode? nicknameFocusNode;
+  TextEditingController? nicknameController;
+  String? Function(BuildContext, String?)? nicknameControllerValidator;
+  // State field(s) for emailAddress widget.
+  FocusNode? emailAddressFocusNode;
+  TextEditingController? emailAddressController;
+  String? Function(BuildContext, String?)? emailAddressControllerValidator;
+  // State field(s) for password widget.
+  FocusNode? passwordFocusNode;
+  TextEditingController? passwordController;
+  late bool passwordVisibility;
+  String? Function(BuildContext, String?)? passwordControllerValidator;
+
   /// Initialization and disposal methods.
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    passwordVisibility = false;
+  }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     tabBarController?.dispose();
+    nicknameFocusNode?.dispose();
+    nicknameController?.dispose();
+
+    emailAddressFocusNode?.dispose();
+    emailAddressController?.dispose();
+
+    passwordFocusNode?.dispose();
+    passwordController?.dispose();
   }
 
   /// Action blocks are added here.

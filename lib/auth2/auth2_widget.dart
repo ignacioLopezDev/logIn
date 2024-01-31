@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'auth2_model.dart';
 export 'auth2_model.dart';
 
@@ -14,7 +15,7 @@ class Auth2Widget extends StatefulWidget {
   const Auth2Widget({super.key});
 
   @override
-  _Auth2WidgetState createState() => _Auth2WidgetState();
+  State<Auth2Widget> createState() => _Auth2WidgetState();
 }
 
 class _Auth2WidgetState extends State<Auth2Widget>
@@ -133,6 +134,8 @@ class _Auth2WidgetState extends State<Auth2Widget>
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
